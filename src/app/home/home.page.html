@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>
+      BigCity
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <mat-accordion>
+      <mat-expansion-panel class="expansion_panel" *ngFor="let score of data; let i = index;">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{ score?.topic }}
+          </mat-panel-title>
+          <mat-panel-description class="expansion_description">
+            {{ score?.date | date: 'dd MMM yyyy' }}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="exapsion-panel-inside">
+            <span class="points">Total Points- {{ score?.total_score }}</span> 
+            <div class="question_answer" *ngFor="let question of score?.question_answers;let i = index;">
+              <p>Question: {{ question?.questions }}</p>
+              <p>Points: <span class="points_table">{{ question?.points }}</span></p>
+              <mat-divider></mat-divider>
+            </div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+</ion-content>
